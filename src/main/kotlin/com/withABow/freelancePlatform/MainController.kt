@@ -1,0 +1,38 @@
+package com.withABow.freelancePlatform
+
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PatchMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
+
+private const val template = "Hello, %s!"
+
+@RestController
+
+class MainController (
+    private val userService: UserService,
+    private val orderService: OrderService
+){
+
+    @GetMapping("/users")
+    fun showUsers() = userService.getUsers()
+
+    @GetMapping("/orders")
+    fun showOrders() = orderService.getOrders()
+
+    @PostMapping("/users")
+    fun createUser(@RequestParam name: String = "Noname") = userService.createUser(name)
+
+    @PostMapping("/orders")
+    fun createOrder(
+        @RequestParam title: String,
+        @RequestParam uni: String,
+        @RequestParam userId: Int,
+        )  {orderService.createOrder(title, uni, userId)
+    }
+
+    @PatchMapping("/orders")
+    fun acceptOrder(@RequestParam orderId: Int, @RequestParam userId: Int) =
+        orderService.acceptOrder(orderId, userId)
+}
