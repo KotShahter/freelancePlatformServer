@@ -16,5 +16,5 @@ class UserService {
 
     fun getUsers() = users
 
-    fun getUserById(id: Int): User = users.find { user -> user.id == id }
+    fun getUserById(id: Int): User? = users.find { user -> user.id == id }
 }

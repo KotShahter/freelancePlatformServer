@@ -6,7 +6,7 @@ data class Order(
     val id: Int,
     val title: String,
     val uni: String,
-    val status: Status,
-    val createdBy: User,
-    var takenBy: User
+    var status: Status,
+    val createdBy: User?,
+    var takenBy: User?
 )
