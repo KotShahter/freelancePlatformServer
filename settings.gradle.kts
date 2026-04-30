@@ -1,1 +1,1 @@
-rootProject.name = "freelancePlatform"
+    rootProject.name = "freelancePlatform"

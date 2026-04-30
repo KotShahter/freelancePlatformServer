@@ -1,3 +1,11 @@
 spring:
   application:
     name: freelancePlatform
+  datasource:
+    url: jdbc:postgresql://localhost:5432/freelance?options=-c%20lc_messages=english
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update

@@ -1,5 +1,7 @@
-package com.withABow.freelancePlatform
+package com.withABow.freelancePlatform.services
 
+import com.withABow.freelancePlatform.entities.Order
+import com.withABow.freelancePlatform.entities.Status
 import org.springframework.stereotype.Service
 import java.util.concurrent.atomic.AtomicInteger
 
