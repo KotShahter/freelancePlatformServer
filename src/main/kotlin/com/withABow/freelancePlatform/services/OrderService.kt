@@ -1,33 +1,32 @@
 package com.withABow.freelancePlatform.services
 
+import com.withABow.freelancePlatform.Repos.OrderRepository
 import com.withABow.freelancePlatform.entities.Order
 import com.withABow.freelancePlatform.entities.Status
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
-import java.util.concurrent.atomic.AtomicInteger
 
 @Service
-class OrderService (private val userService: UserService)
+class OrderService (private val userService: UserService, private val orderRepository: OrderRepository )
 {
-    private val orders = mutableListOf<Order>()
-    private val counter = AtomicInteger()
 
     fun createOrder(title : String, uni : String, userId : Int): Order {
 
         val user = userService.getUserById(userId) ?: throw RuntimeException ("shits fucked")
 
         val order = Order(
-            counter.incrementAndGet(),
-            title,
-            uni,
-            Status.Open,
-            user,
-            null
+            title = title,
+            uni = uni,
+            status = Status.Open,
+            createdBy = user,
+            takenBy = null
         )
-        orders.add(order)
-        return order
+
+        return orderRepository.save(order)
     }
 
     fun acceptOrder(orderId: Int, userId: Int): Order {
+
         val order = getOrderById(orderId) ?: throw RuntimeException ("shit is fucked")
         val user = userService.getUserById(userId) ?: throw RuntimeException ("shits fucked")
 
@@ -38,15 +37,15 @@ class OrderService (private val userService: UserService)
 
         order.takenBy = user
         order.status = Status.Closed
-        return order
+
+        return orderRepository.save(order)
     }
 
-    fun deleteOrder (orderId: Int): Boolean {
-        return orders.removeAll { value -> value.id == orderId }
+    fun deleteOrder (orderId: Int) {
+        return orderRepository.deleteById( orderId )
     }
 
-    fun getOrders() = orders
+    fun getOrders() = orderRepository.findAll()
 
-    fun getOrderById(id: Int): Order? = orders.find { order -> order.id == id }
-
+    fun getOrderById(id: Int): Order? = orderRepository.findByIdOrNull(id)
 }
