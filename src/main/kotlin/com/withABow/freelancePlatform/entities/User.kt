@@ -12,7 +12,8 @@ data class User(
     val id: Int = 0,
 
     val username: String,
+    val password: String?,
 
     @Enumerated(EnumType.STRING)
-    var role: Role,
+    var role: Role
 )

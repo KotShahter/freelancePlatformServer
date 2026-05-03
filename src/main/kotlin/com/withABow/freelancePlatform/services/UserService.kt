@@ -1,20 +1,24 @@
 package com.withABow.freelancePlatform.services
 
-import com.withABow.freelancePlatform.Repository
+import com.withABow.freelancePlatform.Repos.UserRepository
 import com.withABow.freelancePlatform.entities.Role
 import com.withABow.freelancePlatform.entities.User
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
-import java.util.concurrent.atomic.AtomicInteger
 
 @Service
-class UserService (private val userRepository : Repository)
+class UserService (
+            private val userRepository : UserRepository,
+            private val passwordEncoder : PasswordEncoder
+)
 
 {
     fun createUser(name: String = "noname"): User {
         val user = User(
             username = name,
-            role = Role.USER
+            role = Role.USER,
+            password = passwordEncoder.encode("123")
         )
 
         return userRepository.save(user)

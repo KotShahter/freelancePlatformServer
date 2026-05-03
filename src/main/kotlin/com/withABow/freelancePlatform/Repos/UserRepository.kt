@@ -1,10 +1,10 @@
-package com.withABow.freelancePlatform
+package com.withABow.freelancePlatform.Repos
 
 import com.withABow.freelancePlatform.entities.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface Repository : JpaRepository <User, Int> {
-
+interface UserRepository : JpaRepository<User, Int> {
+    fun findByUsername(username: String) : User?
 }
