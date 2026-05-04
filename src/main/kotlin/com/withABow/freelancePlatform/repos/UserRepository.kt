@@ -1,4 +1,4 @@
-package com.withABow.freelancePlatform.Repos
+package com.withABow.freelancePlatform.repos
 
 import com.withABow.freelancePlatform.entities.User
 import org.springframework.data.jpa.repository.JpaRepository
