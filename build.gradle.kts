@@ -29,7 +29,13 @@ dependencies {
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("io.github.kotlin-telegram-bot.kotlin-telegram-bot:telegram:6.3.0")
 }
+
+repositories {
+    maven { url = uri("https://jitpack.io") }
+}
+
 
 kotlin {
 	compilerOptions {
