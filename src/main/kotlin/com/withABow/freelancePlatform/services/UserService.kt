@@ -1,6 +1,6 @@
 package com.withABow.freelancePlatform.services
 
-import com.withABow.freelancePlatform.Repos.UserRepository
+import com.withABow.freelancePlatform.repos.UserRepository
 import com.withABow.freelancePlatform.entities.Role
 import com.withABow.freelancePlatform.entities.User
 import org.springframework.data.repository.findByIdOrNull

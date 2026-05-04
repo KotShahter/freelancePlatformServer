@@ -1,6 +1,6 @@
 package com.withABow.freelancePlatform.services
 
-import com.withABow.freelancePlatform.Repos.OrderRepository
+import com.withABow.freelancePlatform.repos.OrderRepository
 import com.withABow.freelancePlatform.entities.Order
 import com.withABow.freelancePlatform.entities.Status
 import org.springframework.data.repository.findByIdOrNull
