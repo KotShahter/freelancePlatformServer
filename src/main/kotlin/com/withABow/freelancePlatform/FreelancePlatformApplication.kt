@@ -1,6 +1,5 @@
 package com.withABow.freelancePlatform
 
-import TelegramBot
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -8,7 +7,7 @@ import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
-class Application {
+class Application (){
 
     @Bean
     fun commandLineRunner(ctx: ApplicationContext) = CommandLineRunner {
@@ -16,10 +15,9 @@ class Application {
 //        val beanNames = ctx.beanDefinitionNames
 //        beanNames.sorted().forEach { println(it) }
     }
+
 }
 
 fun main(args: Array<String>) {
-    val tgbot = TelegramBot()
-    tgbot.botAction()
     runApplication<Application>(*args)
 }

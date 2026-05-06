@@ -11,13 +11,15 @@ import jakarta.persistence.Table
 enum class Status {Open, Closed}
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 data class Order(
     @Id @GeneratedValue
     val id: Int = 0,
 
     val title: String,
     val uni: String,
+    val professor: String,
+    val notes: String,
 
     @Enumerated(EnumType.STRING)
     var status: Status,

@@ -26,11 +26,11 @@ class MainController (
     @PostMapping("/users")
     fun createUser(@RequestParam name: String = "Noname") = userService.createUser(name)
 
-    @PostMapping("/orders")
-    fun createOrder(
-        @RequestParam title: String,
-        @RequestParam uni: String,
-        @RequestParam userId: Int) = orderService.createOrder(title, uni, userId)
+//    @PostMapping("/orders")
+//    fun createOrder(
+//        @RequestParam title: String,
+//        @RequestParam uni: String,
+//        @RequestParam userId: Int) = orderService.createOrde  r(11111, uni, userId)
 
 
     @DeleteMapping("/orders")
@@ -39,6 +39,6 @@ class MainController (
     ) = orderService.deleteOrder(id)
 
     @PatchMapping("/orders")
-    fun acceptOrder(@RequestParam orderId: Int, @RequestParam userId: Int) =
+    fun acceptOrder(@RequestParam orderId: Int, @RequestParam userId: Long) =
         orderService.acceptOrder(orderId, userId)
 }
