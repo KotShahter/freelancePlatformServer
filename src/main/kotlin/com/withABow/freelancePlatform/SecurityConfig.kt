@@ -1,6 +1,5 @@
 package com.withABow.freelancePlatform
 
-//import com.withABow.freelancePlatform.CustomUserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

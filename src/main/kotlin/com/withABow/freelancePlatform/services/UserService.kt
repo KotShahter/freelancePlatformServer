@@ -9,13 +9,14 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserService (
-            private val userRepository : UserRepository,
-            private val passwordEncoder : PasswordEncoder
+        private val userRepository : UserRepository,
+        private val passwordEncoder : PasswordEncoder
 )
 
 {
-    fun createUser(name: String = "noname"): User {
+    fun createUser(name: String = "noname", contact: String? = ""): User {
         val user = User(
+            contact = contact,
             username = name,
             role = Role.USER,
             password = passwordEncoder.encode("123")
@@ -27,6 +28,9 @@ class UserService (
     fun getUsers() : List<User> = userRepository.findAll()
 
 
-    fun getUserById(id: Int): User? =
+    fun getUserById(id: Long): User? =
         userRepository.findByIdOrNull(id)
+
+    fun getUserByName(username: String): User? =
+        userRepository.findByUsername(username)
 }
