@@ -14,16 +14,18 @@ class SecurityConfig (private val userDetailsService: CustomUserDetailsService){
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            .csrf { it.disable() } // for Postman testing
+            .csrf { it.disable() } // Keep disabled for JSON API
             .authorizeHttpRequests {
                 it
-                    .requestMatchers("/api/users").permitAll()
+                    .requestMatchers("/", "/*.html", "/static/**", "/logo.png", "/api/login").permitAll()
+                    .requestMatchers("/api/users/**").hasRole("ADMIN")
+                    .requestMatchers("/api/orders").hasAnyRole("ADMIN", "TUTOR")
                     .anyRequest().authenticated()
             }
-
             .userDetailsService(userDetailsService)
-            .formLogin { }
-            .httpBasic { }
+            .formLogin { it.disable() } // We use /api/login JSON endpoint
+            .httpBasic { it.disable() } // Cleaner for SPA-style frontend
+
 
         return http.build()
     }

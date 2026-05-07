@@ -2,7 +2,7 @@ package com.withABow.freelancePlatform.entities
 
 import jakarta.persistence.*
 
-enum class Role {ADMIN, USER}
+enum class Role {ADMIN, USER, TUTOR}
 
 @Entity
 @Table(name = "users")

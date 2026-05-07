@@ -1,5 +1,6 @@
 package com.withABow.freelancePlatform
 
+import com.withABow.freelancePlatform.entities.Role
 import com.withABow.freelancePlatform.services.OrderService
 import com.withABow.freelancePlatform.services.UserService
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -24,14 +25,33 @@ class MainController (
     fun showOrders() = orderService.getOrders()
 
     @PostMapping("/users")
-    fun createUser(@RequestParam name: String = "Noname") = userService.createUser(name)
+    fun createUser(@RequestParam name: String) = userService.createUser(name)
 
-//    @PostMapping("/orders")
-//    fun createOrder(
-//        @RequestParam title: String,
-//        @RequestParam uni: String,
-//        @RequestParam userId: Int) = orderService.createOrde  r(11111, uni, userId)
+    @PostMapping("/users/tutor")
+    fun createTutor(
+        @RequestParam name: String,
+        @RequestParam contact: String,
+    )
+    {
+        userService.createUser(
+            name = name,
+            contact = contact,
+            role = Role.TUTOR
+        )
+    }
 
+    @PostMapping("/users/admin")
+    fun createAdmin(
+        @RequestParam name: String,
+        @RequestParam contact: String,
+    )
+    {
+        userService.createUser(
+            name = name,
+            contact = contact,
+            role = Role.ADMIN
+        )
+    }
 
     @DeleteMapping("/orders")
     fun deleteOrder(
@@ -41,4 +61,5 @@ class MainController (
     @PatchMapping("/orders")
     fun acceptOrder(@RequestParam orderId: Int, @RequestParam userId: Long) =
         orderService.acceptOrder(orderId, userId)
+
 }

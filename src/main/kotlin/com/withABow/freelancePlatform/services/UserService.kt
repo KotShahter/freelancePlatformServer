@@ -14,11 +14,11 @@ class UserService (
 )
 
 {
-    fun createUser(name: String = "noname", contact: String? = ""): User {
+    fun createUser(name: String = "noname", contact: String? = "", role: Role = Role.USER): User {
         val user = User(
             contact = contact,
             username = name,
-            role = Role.USER,
+            role = role,
             password = passwordEncoder.encode("123")
         )
 
@@ -33,4 +33,9 @@ class UserService (
 
     fun getUserByName(username: String): User? =
         userRepository.findByUsername(username)
+
+    fun authenticate(username: String, password: String): User? {
+        val user = userRepository.findByUsername(username) ?: return null
+        return if (passwordEncoder.matches(password, user.password)) user else null
+    }
 }
