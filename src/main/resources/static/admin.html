@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tutoR. - Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-brand">
+        <img src="logo.png" alt="tutoR." class="logo-small">
+        <span>tutoR. Admin</span>
+    </div>
+    <div class="nav-user">
+        <span id="userName">Admin</span>
+        <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('users')">Users Management</button>
+        <button class="tab-btn" onclick="showTab('orders')">Orders Management</button>
+    </div>
+
+    <!-- Users Tab -->
+    <div id="usersTab" class="tab-content active">
+        <div class="section-header">
+            <h2>Manage Users</h2>
+            <button class="btn-primary" onclick="showModal('addUserModal')">+ Add User</button>
+        </div>
+
+        <div class="card">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Contact</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                <!-- Dynamic content -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Orders Tab -->
+    <div id="ordersTab" class="tab-content">
+        <div class="section-header">
+            <h2>Manage Orders</h2>
+        </div>
+
+        <div class="card">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>University</th>
+                    <th>Professor</th>
+                    <th>Status</th>
+                    <th>Created By</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                <!-- Dynamic content -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Add User Modal -->
+<div id="addUserModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('addUserModal')">&times;</span>
+        <h2>Add New User</h2>
+        <form id="addUserForm">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="newUsername" required>
+            </div>
+            <div class="form-group">
+                <label>Contact</label>
+                <input type="text" id="newContact">
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select id="newUserRole">
+                    <option value="USER">User</option>
+                    <option value="TUTOR">Tutor</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="newPassword" placeholder="Leave blank for default" autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn-primary">Create User</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="app.js"></script>
+<script>
+    // Check authentication on load
+    checkAuth('ADMIN');
+    loadUsers();
+    loadOrders();
+</script>
+</body>
+</html>

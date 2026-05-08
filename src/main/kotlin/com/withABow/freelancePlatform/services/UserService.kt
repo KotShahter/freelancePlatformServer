@@ -14,12 +14,15 @@ class UserService (
 )
 
 {
-    fun createUser(name: String = "noname", contact: String? = "", role: Role = Role.USER): User {
+    fun createUser(name: String = "noname",
+                   contact: String? = "",
+                   role: Role = Role.USER,
+                   password: String = "VeryHardPasswordNoOneCaresAboutUserAccountsLol"): User {
         val user = User(
             contact = contact,
             username = name,
             role = role,
-            password = passwordEncoder.encode("123")
+            password = passwordEncoder.encode(password)
         )
 
         return userRepository.save(user)
@@ -27,6 +30,12 @@ class UserService (
 
     fun getUsers() : List<User> = userRepository.findAll()
 
+    fun deleteUser(id: Long) {
+        val user = getUserById(id) ?: throw IllegalArgumentException("User not found")
+        if (user.username == "admin") throw IllegalArgumentException("Cannot delete admin")
+
+        userRepository.delete(user)
+    }
 
     fun getUserById(id: Long): User? =
         userRepository.findByIdOrNull(id)

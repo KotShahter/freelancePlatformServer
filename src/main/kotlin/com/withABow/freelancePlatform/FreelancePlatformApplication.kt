@@ -1,10 +1,11 @@
 package com.withABow.freelancePlatform
 
+import com.withABow.freelancePlatform.entities.Role
+import com.withABow.freelancePlatform.repos.UserRepository
 import com.withABow.freelancePlatform.services.UserService
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
