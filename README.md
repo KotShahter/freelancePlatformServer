@@ -5,15 +5,15 @@ A system, that consists of a web application and a telegram bot for managing tut
 ## Features
 
 ### Role-Based Access Control
+- **Create Orders via Telegram bot** Convenient way for placing orders by users
 - **Admin Dashboard:** Full user & order management
-- **Tutor Dashboard:** Browse, filter, and accept tutoring requests
+- **Tutor Dashboard:** Browse, and accept tutoring requests
 - **Secure Authentication:** Session-based login with Spring Security & BCrypt
 
 ### Admin Capabilities
 - Create users with custom or default passwords
 - Delete users & orders
 - View all orders with full details & timestamps
-- Strict endpoint protection
 
 ### Tutor Capabilities
 - View all orders in a clean horizontal layout
@@ -22,19 +22,19 @@ A system, that consists of a web application and a telegram bot for managing tut
 - Visual distinction between available and completed tasks
 
 ### UI/UX
-- Responsive design (mobile & desktop)
+- Responsive design
 - Modern card-based layout with status badges
-- Clear separation of Open vs. Closed orders with gradient dividers
-- Session persistence across page refreshes (`JSESSIONID`)
+- Vibecoded
 
-## 🛠 Tech Stack
+### 🛠 Tech Stack
 
 | Layer       | Technologies                          |
 |-------------|---------------------------------------|
-| **Backend** | Kotlin, Spring Boot 3, Spring Security, Spring Data JPA |
-| **Database**| PostgreSQL             |
-| **Security**    | Session-based, Spring Security  |
-| **Build**   | Gradle                |
+| **Backend** | Kotlin, Spring Boot, Spring Security|
+| **Database**| PostgreSQL, Spring Data JPA         |
+| **Security**    | Spring Security  |
+| **Integration** | Telegram API, Kotlin Telegram Bot |
+| **Build**   | Gradle    |
 
 ##  Getting Started
 
@@ -97,6 +97,7 @@ src/main/
 │   ├── services/
 │   ├── repos/
 │   └── entities/
+|   
 └── resources/static/
     ├── index.html      # Login page
     ├── admin.html      # Admin dashboard
@@ -105,30 +106,10 @@ src/main/
     ── app.js          # Frontend logic & API calls
 ```
 
-## 🔌 API Endpoints
-| Method | Endpoint          | Access      | Description               |
-|--------|-------------------|-------------|---------------------------|
-| `POST` | `/api/login`      | Public      | Authenticate user         |
-| `GET`  | `/api/users`      | Admin/Tutor | List all users            |
-| `POST` | `/api/users/**`   | Admin       | Create user (role-specific)|
-| `DELETE`| `/api/users`     | Admin       | Delete user               |
-| `GET`  | `/api/orders`     | Admin/Tutor | List all orders           |
-| `PATCH`| `/api/orders`     | Tutor       | Accept order              |
-| `DELETE`| `/api/orders`    | Admin       | Delete order              |
-
-## 📸 Screenshots
-*(Замените эти placeholder'ы на реальные скриншоты вашего проекта)*
-| Login | Admin Dashboard | Tutor Dashboard |
-|:---:|:---:|:---:|
-| ![Login](screenshots/login.png) | ![Admin](screenshots/admin.png) | ![Tutor](screenshots/tutor.png) |
-
 ## 🚧 Future Improvements
-- [ ] JWT authentication for stateless API
-- [ ] File attachments for orders (PDF/DOCX)
-- [ ] Real-time notifications (WebSocket)
 - [ ] Pagination & advanced search filters
-- [ ] Email notifications for order acceptance
-- [ ] Unit & Integration tests (JUnit 5, MockMvc)
+- [ ] Telegram notifications for order acceptance
+- [ ] Split the app on microservises
 
 ## 📄 License
 This project is open-source under the [MIT License](LICENSE).
@@ -136,11 +117,3 @@ This project is open-source under the [MIT License](LICENSE).
 ---
 Built by Evgenii Lapenko
 ```
-
-### 📌 Как использовать:
-1. Создайте файл `README.md` в корне репозитория
-2. Скопируйте весь код выше
-3. Замените `YOUR_USERNAME`, `[Your Name/Handle]` и placeholder'ы для скриншотов
-4. Залейте на GitHub — всё отрендерится автоматически
-
-Если хотите, могу добавить секцию с **Dockerfile** или **GitHub Actions CI/CD** для автоматической сборки. Просто скажите! 🚀
