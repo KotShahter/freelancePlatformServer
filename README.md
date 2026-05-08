@@ -153,4 +153,4 @@ src/main/
 This project is open-source under the [MIT License](LICENSE).
 
 ---
-Built by Evgenii Lapenko
+Built by Evgenii Lapenko / @WithABow
