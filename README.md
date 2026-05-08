@@ -85,14 +85,14 @@ cancel - Cancel current order
    ```
 6. Open `http://localhost:8080` in your browser or deploy this somewhere else
 
-### 🔑 Default Credentials
+### Default Credentials
 | Role   | Username | Password |
 |--------|----------|----------|
 | Admin  | `admin`  | `123`    |
 
-> 💡 Users can be created via the Admin panel with custom passwords.
+> Users can be created via the Admin panel with custom passwords.
 
-## 📖 Usage Guide
+## Usage Guide
 
 ### Admin Workflow
 1. Log in as `admin`
@@ -149,7 +149,7 @@ src/main/
 - [ ] Split the app on microservises
 - [ ] CI / CD implementation
 
-## 📄 License
+## License
 This project is open-source under the [MIT License](LICENSE).
 
 ---
