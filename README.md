@@ -143,14 +143,25 @@ src/main/
 ```
 
 
+
+
 ## 🚧 Future Improvements
 - [ ] Pagination & advanced search filters
 - [ ] Telegram notifications for order acceptance
 - [ ] Split the app on microservises
 - [ ] CI / CD implementation
 
+## 📸 Screenshots
+
+| Admin Dashboard | Tutor Dashboard |
+|:---:|:---:|
+ <img width="1864" height="944" alt="изображение" src="https://github.com/user-attachments/assets/d036d52e-6fed-482e-b609-5ceb14613d37" /> | <img width="1814" height="957" alt="изображение" src="https://github.com/user-attachments/assets/529f8dcd-467d-49f8-ba97-abfe97f3e9e0" />
+
+
 ## License
 This project is open-source under the [MIT License](LICENSE).
 
 ---
 Built by Evgenii Lapenko / @WithABow
+
+
