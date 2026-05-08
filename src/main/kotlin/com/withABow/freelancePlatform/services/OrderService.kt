@@ -6,6 +6,7 @@ import com.withABow.freelancePlatform.entities.Status
 import com.withABow.freelancePlatform.entities.User
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class OrderService (private val userService: UserService, private val orderRepository: OrderRepository )
@@ -26,7 +27,8 @@ class OrderService (private val userService: UserService, private val orderRepos
             createdBy = createdBy,
             professor = professor,
             notes = notes,
-            takenBy = null
+            takenBy = null,
+            createdAt = LocalDateTime.now()
         )
 
         return orderRepository.save(order)

@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
+import java.time.LocalDateTime
 
 enum class Status {Open, Closed}
 
@@ -28,5 +29,7 @@ data class Order(
     val createdBy: User,
 
     @ManyToOne
-    var takenBy: User?
+    var takenBy: User?,
+
+    val createdAt: LocalDateTime = LocalDateTime.now()
 )

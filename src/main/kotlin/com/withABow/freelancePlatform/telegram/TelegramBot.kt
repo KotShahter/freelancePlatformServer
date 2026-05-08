@@ -80,6 +80,18 @@ class TelegramBot(
                         return@command
                     }
 
+                    val count = orderService.getOrders().count { order ->
+                        order.createdBy == userService.getUserByName(message.from?.id.toString()) && order.takenBy == null
+                    }
+
+                    if (count >= 3) {
+                        bot.sendMessage(
+                            chatId = ChatId.fromId(chatId),
+                            text = "❌ You have already placed 3 orders, please wait before placing another"
+                        )
+                        return@command
+                    }
+
                     activeFlows[chatId] = OrderState.AWAITING to OrderFlow()
                     bot.sendMessage(
                         chatId = ChatId.fromId(chatId),
